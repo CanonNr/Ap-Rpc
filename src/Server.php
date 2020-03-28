@@ -19,7 +19,7 @@ class Server
         $this->isExistSwoole();
     }
 
-    function isExistSwoole(){
+    public function isExistSwoole(){
         if (!extension_loaded('swoole')) {
             echo 'Swoole extension not installed';
             die();
