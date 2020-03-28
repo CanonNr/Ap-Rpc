@@ -5,23 +5,23 @@ namespace Canon\Rpc\Client;
 use Canon\Rpc\Base\Register;
 class Client
 {
-    public static $instances = [];
+    private static $instances = [];
 
-    public $host;
+    private $host;
 
-    public $port;
+    private $port;
 
-    public $config;
+    private $config;
 
-    public $client;
+    private $client;
 
-    public $registerClass = \App\Rpc\rpc::class;
+    private $registerClass = \App\Rpc\rpc::class;
 
-    public $class;
+    private $class;
 
-    public $method;
+    private $method;
 
-    public $args;
+    private $args;
     
     public function __construct()
     {
@@ -58,7 +58,7 @@ class Client
     public function setSwooleClient()
     {
         $client = new \Swoole\Client(SWOOLE_SOCK_TCP);
-        if (!$client->connect('127.0.0.1', 9501, -1)) {
+        if (!$client->connect($this->host, $this->port, -1)) {
             exit("connect failed. Error: {$client->errCode}\n");
         }
         $this->client = $client;
