@@ -5,6 +5,8 @@ namespace Canon\Rpc\Client;
 use Canon\Rpc\Base\Register;
 class Client
 {
+    public static $instances = [];
+
     public $host;
 
     public $port;
@@ -21,13 +23,29 @@ class Client
 
     public $args;
     
-    public function __construct($host,$port,array $config = [])
+    public function __construct()
+    {
+        $this->isExistSwoole();
+    }
+
+    public function set($host,$port,array $config = [])
     {
         $this->host = $host;
         $this->port = $port;
         $this->config = $config;
         $this->setSwooleClient();
-        $this->isExistSwoole();
+        return $this;
+    }
+
+    public static function getInstance()
+    {
+        $key = get_called_class();
+        
+        if (isset(static::$instances[$key]) && static::$instances[$key] instanceof static) {
+            return static::$_instances[$key];
+        }
+
+        return static::$instances[$key] = new static();
     }
 
     public function isExistSwoole(){
