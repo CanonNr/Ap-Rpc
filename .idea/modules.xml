@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Ap-Rpc.iml" filepath="$PROJECT_DIR$/.idea/Ap-Rpc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../x-swoole-rpc/.idea/x-swoole-rpc.iml" filepath="$PROJECT_DIR$/../x-swoole-rpc/.idea/x-swoole-rpc.iml" />
+    </modules>
+  </component>
+</project>
