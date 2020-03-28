@@ -44,6 +44,7 @@ class Client
             exit("connect failed. Error: {$client->errCode}\n");
         }
         $this->client = $client;
+
     }
 
     public function class($className)
@@ -69,5 +70,8 @@ class Client
         ];
         $client = $this->client;
         $client->send(json_encode($data));
+        echo $client->recv();
+        $client->close();
+
     }
 }
