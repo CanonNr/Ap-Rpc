@@ -76,7 +76,7 @@ class Client
     {
         $this->method = $name;
         $this->args = $arguments;
-        $this->send();
+        return rtrim($this->send(),"\n");
     }
 
     public function send()
@@ -88,8 +88,9 @@ class Client
         ];
         $client = $this->client;
         $client->send(json_encode($data));
-        echo $client->recv();
+        $result = $client->recv();
         $client->close();
+        return $result;
 
     }
 }
